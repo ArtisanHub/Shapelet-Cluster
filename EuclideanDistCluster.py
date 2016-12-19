@@ -10,7 +10,7 @@ eventType = 0
 clusterdRowID = []
 tempDistances = []
 
-f = open('D:/FYP-Developments/Shapelet-Cluster/occu_demo_data.csv', 'rU' ) #open train data
+f = open('occu_demo_data.csv', 'rU' ) #open train data
 
 
 #preping the analysis file with the respective window data
@@ -18,7 +18,7 @@ for line in f:
     cells = line.split(",")
     # print("line number:"  + str(count1) + " ########### " + cells[7])
 
-    k = open('D:/FYP-Developments/Shapelet-Cluster/occu_demo_data.csv', 'rU')  # open train data
+    k = open('occu_demo_data.csv', 'rU')  # open train data
 
     del tempDistances [:]
 
