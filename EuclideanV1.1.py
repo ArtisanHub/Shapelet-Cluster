@@ -29,16 +29,16 @@ for row in k_norm:
         val = distance.euclidean(row,row1)
         dist_list_row.append(val)
     dist_list.append(dist_list_row)
-    # print(len(dist_list_row))
+    # print(dist_list_row)
 
-db = DBSCAN(eps=0.3,min_samples=4).fit(dist_list[0])
-core_samples_mask = np.zeros_like(db.labels_, dtype=bool)
-core_samples_mask[db.core_sample_indices_] = True
-labels = db.labels_
+optics_instance = optics(dist_list[0],0.5,6)
 
-# Number of clusters in labels, ignoring noise if present.
-n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
+optics_instance.process()
 
-print('Estimated number of clusters: %d' % n_clusters_)
-
+clusters = optics_instance.get_clusters()
+print("Clusters")
+print(clusters)
+noise = optics_instance.get_noise()
+print("Noise")
+print(noise)
 
