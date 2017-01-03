@@ -1,5 +1,5 @@
 import math
-
+from sklearn import preprocessing
 count1 = 1
 count2 = 1
 distance = 0
@@ -30,7 +30,9 @@ for line in f:
 
 
     k.close()
-
+    print(tempDistances)
+    # tempDistances = preprocessing.scale(tempDistances)
+    # print(tempDistances)
     count2 = 1
     status = True
     for x in tempDistances:
