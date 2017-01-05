@@ -23,6 +23,7 @@ k_norm = preprocessing.scale(k)
 
 dist_list = list()
 # Got the whole data set to a list.
+count =1
 for row in k_norm:
     dist_list_row = list()
     for row1 in k_norm:
@@ -31,14 +32,17 @@ for row in k_norm:
     dist_list.append(dist_list_row)
     # print(dist_list_row)
 
-optics_instance = optics(dist_list[0],0.5,6)
+    optics_instance = optics(dist_list_row,0.2117,1)
+    print ("Distance for row ")
+    print(count)
+    count = count + 1
+    print(dist_list_row)
+    optics_instance.process()
 
-optics_instance.process()
-
-clusters = optics_instance.get_clusters()
-print("Clusters")
-print(clusters)
-noise = optics_instance.get_noise()
-print("Noise")
-print(noise)
+    clusters = optics_instance.get_clusters()
+    print("Clusters")
+    print(clusters)
+    noise = optics_instance.get_noise()
+    print("Noise")
+    print(noise)
 
