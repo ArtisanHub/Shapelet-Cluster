@@ -1,5 +1,5 @@
 import math
-
+from sklearn import preprocessing
 count1 = 1
 count2 = 1
 distance = 0
@@ -10,7 +10,7 @@ eventType = 0
 clusterdRowID = []
 tempDistances = []
 
-f = open('D:/FYP-Developments/Shapelet-Cluster/occu_demo_data.csv', 'rU' ) #open train data
+f = open('occu_demo_data.csv', 'rU' ) #open train data
 
 
 #preping the analysis file with the respective window data
@@ -18,7 +18,7 @@ for line in f:
     cells = line.split(",")
     print("line number:"  + str(count1))
 
-    k = open('D:/FYP-Developments/Shapelet-Cluster/occu_demo_data.csv', 'rU')  # open train data
+    k = open('occu_demo_data.csv', 'rU')  # open train data
 
     del tempDistances [:]
 
@@ -26,7 +26,6 @@ for line in f:
         tempCells = tempLine.split(",")
         distance = pow(pow((float(cells[2]) - float(tempCells[2])), 2) + pow((float(cells[3]) - float(tempCells[3])), 2) + pow((float(cells[4]) - float(tempCells[4])), 2) + pow((float(cells[5]) - float(tempCells[5])), 2) + pow((float(cells[6]) - float(tempCells[6])), 2),0.5)
         tempDistances.append(distance)
-        #print(str(distance) + " $$$$$$$$ " + str(tempCells[7]))
 
     k.close()
 
@@ -45,11 +44,8 @@ for line in f:
                 status = False
                 print("Row number: " +str(count2))
 
-
-
         count2 = count2 + 1
 
-        #print(tempDistances)
     count1 = count1 + 1
 
 f.close()
