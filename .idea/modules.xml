@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Shapelet-Cluster.iml" filepath="$PROJECT_DIR$/.idea/Shapelet-Cluster.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Cluster_java/shapelet_cluster-app/shapelet_cluster-app.iml" filepath="$PROJECT_DIR$/Cluster_java/shapelet_cluster-app/shapelet_cluster-app.iml" />
     </modules>
   </component>
 </project>
