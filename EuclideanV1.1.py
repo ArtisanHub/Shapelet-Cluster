@@ -10,7 +10,10 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
+r, c = 20, 2
+results = [[0 for x in range(c)] for y in range(r)]
 
+tempClusterCount = 0
 
 k = genfromtxt('occu_demo_data.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
@@ -42,7 +45,22 @@ for row in k_norm:
     clusters = optics_instance.get_clusters()
     print("Clusters")
     print(clusters)
+    # print("Cluster Points")
+    # print(len(clusters))
     noise = optics_instance.get_noise()
     print("Noise")
     print(noise)
 
+    clusterCount = 0
+    for k in clusters:
+       for temp in k:
+           if clusterCount == 0 or clusterCount == 1:
+               #print("####### " + str(temp) + " ######### " + str(clusterCount))
+               results[temp][clusterCount]  = results[temp][clusterCount] + 1
+
+           else:
+               continue
+
+       clusterCount = clusterCount + 1
+
+print(results)
