@@ -10,22 +10,18 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-r, c = 20, 2
+r, c = 100, 2
 results = [[0 for x in range(c)] for y in range(r)]
-
-#results = np.zeros(shape=(20,2))
 
 k = genfromtxt('occu_demo_data.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
-# print(k)
 
-# print(len(k[0]))
 k = k[:,0:len(k[0])-1]
-# np.delete(k_norm,2,axis=1)
+
 k_norm = preprocessing.scale(k)
 
 dist_list = list()
-# Got the whole data set to a list.
+
 count =1
 for row in k_norm:
     dist_list_row = list()
@@ -35,7 +31,7 @@ for row in k_norm:
     dist_list.append(dist_list_row)
     # print(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.2117,1)
+    optics_instance = optics(dist_list_row,0.2117,5)
     print ("Distance for row ")
     print(count)
     count = count + 1
@@ -53,8 +49,7 @@ for row in k_norm:
     clusterCount = 0
     for k in clusters:
        for temp in k:
-           if clusterCount == 0 or clusterCount == 1:
-               #print("####### " + str(temp) + " ######### " + str(clusterCount))
+           if clusterCount < c:
                results[temp][clusterCount]  = results[temp][clusterCount] + 1
 
            else:
@@ -63,11 +58,25 @@ for row in k_norm:
        clusterCount = clusterCount + 1
 
 print("--------------Clustering Results-------------")
-print(len(results))
-tempRowNum = 1
+
+tempRowNum = 140
+
+output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
+
 for row in results:
-        if row[0] > row[1]:
-            print("Row Id: " + str(tempRowNum) + " - Event Type: 0")
-        else:
-            print("Row Id: " + str(tempRowNum) + " - Event Type: 1")
-        tempRowNum = tempRowNum + 1
+
+    if row[0] > row[1]:
+        output.write(str(tempRowNum))
+        output.write(str(","))
+        output.write(str(0))
+    else:
+        output.write(str(tempRowNum))
+        output.write(str(","))
+        output.write(str(1))
+
+    output.write(str("\n"))
+    tempRowNum = tempRowNum + 1
+
+output.close()
+
+print("--------------Clustering Results Writen to results.csv-------------")
