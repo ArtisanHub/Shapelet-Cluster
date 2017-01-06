@@ -5,11 +5,11 @@ from sklearn import preprocessing
 from numpy import genfromtxt
 from pyclustering.cluster import cluster_visualizer
 from pyclustering.cluster.optics import optics
-from pyclustering.samples.definitions import FCPS_SAMPLES
-from pyclustering.utils import read_sample
-
-# load data from the FCPS set that is provided by the library.
-sample = read_sample(FCPS_SAMPLES.SAMPLE_LSUN)
+# from pyclustering.samples.definitions import FCPS_SAMPLES
+# from pyclustering.utils import read_sample
+#
+# # load data from the FCPS set that is provided by the library.
+# sample = read_sample(FCPS_SAMPLES.SAMPLE_LSUN)
 
 # create BIRCH algorithm for allocation three objects.
 
