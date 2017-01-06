@@ -32,7 +32,7 @@ for row in k_norm:
     # print(dist_list_row)
 
     optics_instance = optics(dist_list_row,0.2117,5)
-    print ("Distance for row ")
+    print("Distance for row ")
     print(count)
     count = count + 1
     print(dist_list_row)
