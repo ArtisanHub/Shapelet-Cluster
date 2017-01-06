@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 r, c = 20, 2
 results = [[0 for x in range(c)] for y in range(r)]
 
-tempClusterCount = 0
+#results = np.zeros(shape=(20,2))
 
 k = genfromtxt('occu_demo_data.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
@@ -45,8 +45,7 @@ for row in k_norm:
     clusters = optics_instance.get_clusters()
     print("Clusters")
     print(clusters)
-    # print("Cluster Points")
-    # print(len(clusters))
+
     noise = optics_instance.get_noise()
     print("Noise")
     print(noise)
@@ -63,4 +62,12 @@ for row in k_norm:
 
        clusterCount = clusterCount + 1
 
-print(results)
+print("--------------Clustering Results-------------")
+print(len(results))
+tempRowNum = 1
+for row in results:
+        if row[0] > row[1]:
+            print("Row Id: " + str(tempRowNum) + " - Event Type: 0")
+        else:
+            print("Row Id: " + str(tempRowNum) + " - Event Type: 1")
+        tempRowNum = tempRowNum + 1
