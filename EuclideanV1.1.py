@@ -15,12 +15,20 @@ results = [[0 for x in range(c)] for y in range(r)]
 
 k = genfromtxt('occu_demo_data.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
-
+l = k
 k = k[:,0:len(k[0])-1]
 
 k_norm = preprocessing.scale(k)
 
 dist_list = list()
+# opt = optics(k_norm,0.1,5)
+# opt.process()
+# cluster = opt.get_clusters()
+# noises = opt.get_noise()
+# print(len(cluster))
+# print((cluster))
+# print(k_norm[1],'.',k_norm[2],'.',k_norm[19],'.',k_norm[4],'.',k_norm[5])
+# print(len(noises))
 
 count =1
 for row in k_norm:
@@ -60,20 +68,24 @@ for row in k_norm:
 print("--------------Clustering Results-------------")
 
 tempRowNum = 140
-
-output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
-
+print(len(results))
+output = open('results.csv', 'w')
+c = 0
 for row in results:
 
     if row[0] > row[1]:
         output.write(str(tempRowNum))
         output.write(str(","))
         output.write(str(0))
+        output.write(str(","))
+        output.write(str(l[c][5]))
     else:
         output.write(str(tempRowNum))
         output.write(str(","))
         output.write(str(1))
-
+        output.write(str(","))
+        output.write(str(l[c][5]))
+    c = c+1
     output.write(str("\n"))
     tempRowNum = tempRowNum + 1
 
