@@ -24,11 +24,11 @@ k = np.ma.compress_cols(np.ma.masked_invalid(k))
 k = k[:,0:len(k[0])-1]
 
 k_norm = preprocessing.scale(k)
-
+# k_norm.diff(k_norm)
 row_num = 1
 count = 0
 
-
+arr = list()
 for row in k_norm:
 
     row_numbers.append(count+1)
@@ -37,16 +37,20 @@ for row in k_norm:
     col3.append(row[2])
     col4.append(row[3])
     col5.append(row[4])
-
     row_num = row_num + 1
     count = count + 1
-
+arr.append(0)
+arr = np.diff(col1)
+# arr.put(99,0)
+print(len(arr))
+print(len(row_numbers))
 plt.figure("Humidity")
 plt.plot(row_numbers, col1)
 
 plt.figure("Light")
-plt.plot(row_numbers, col2)
-
+row_numbers.pop(99)
+plt.plot(row_numbers, arr)
+row_numbers.append(100)
 plt.figure("co2")
 plt.plot(row_numbers, col3)
 
