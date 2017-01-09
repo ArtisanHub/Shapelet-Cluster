@@ -10,10 +10,11 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-r, c = 100, 2
+r, c = 500, 2
 results = [[0 for x in range(c)] for y in range(r)]
 
 k = genfromtxt('occu_demo_data.csv', delimiter=',')
+#k = genfromtxt('eeg_demo.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
 l = k
 k = k[:,0:len(k[0])-1]
@@ -39,7 +40,7 @@ for row in k_norm:
     dist_list.append(dist_list_row)
     # print(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.2117,5)
+    optics_instance = optics(dist_list_row,0.186435,1)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -54,25 +55,32 @@ for row in k_norm:
     print("Noise")
     print(noise)
 
-    clusterCount = 0
+    clusterCount = 1
     for k in clusters:
        for temp in k:
-           if clusterCount < c:
-               results[temp][clusterCount]  = results[temp][clusterCount] + 1
+           if clusterCount <= c:
+               results[temp][clusterCount-1]  = results[temp][clusterCount-1] + 1
 
            else:
-               continue
+               results[temp][c-1] = results[temp][c-1] + 1
 
        clusterCount = clusterCount + 1
 
+    print("Number of clusters")
+    print(clusterCount-1)
+
 print("--------------Clustering Results-------------")
 
-tempRowNum = 140
+
+output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
+
+
 print(len(results))
 output = open('results.csv', 'w')
 c = 0
-for row in results:
 
+for row in results:
+    print("row: " + str(tempRowNum) + " ****has count of cluster 0: " + str(row[0]) + " ****has count of cluster 1: " + str(row[1]))
     if row[0] > row[1]:
         output.write(str(tempRowNum))
         output.write(str(","))
