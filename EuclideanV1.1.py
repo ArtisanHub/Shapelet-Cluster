@@ -10,7 +10,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-r, c = 500, 2
+r, c = 1100, 2
 results = [[0 for x in range(c)] for y in range(r)]
 
 k = genfromtxt('occu_demo_data.csv', delimiter=',')
