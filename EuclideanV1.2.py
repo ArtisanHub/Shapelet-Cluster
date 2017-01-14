@@ -13,12 +13,12 @@ import matplotlib.pyplot as plt
 r, c = 100, 2
 results = [[0 for x in range(c)] for y in range(r)]
 
-k = genfromtxt('occu_demo_data.csv', delimiter=',')
+k = genfromtxt('eeg_demo.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
-print(k[99][5])
+# print(k[99][5])
 l = k
 k = k[:,0:len(k[0])-1]
-
+# print(len(l[0]))
 k_norm = preprocessing.scale(k)
 
 dist_list = list()
@@ -35,9 +35,9 @@ count =1
 arr = list()
 label = list()
 plt.figure("Humidity")
-for num in range(0,100):
+for num in range(0,500):
     arr.append(num)
-    label.append(l[num][5])
+    # label.append(l[num][15])
 for row in k_norm:
     dist_list_row = list()
     val = distance.euclidean(row,k_norm[0])
@@ -46,14 +46,18 @@ for row in k_norm:
     # plt.plot(arr, dist_list_row)
     # print(dist_list_row)
 
-optics_instance = optics(dist_list,0.2117,2)
+optics_instance = optics(dist_list,2.117,2)
 optics_instance.process()
 
 clusters = optics_instance.get_clusters()
 noise = optics_instance.get_noise()
-print((clusters))
-print(k_norm[clusters[0][0]])
-print(k_norm[clusters[2][0]])
+print("Clusters--",len(clusters))
 
+cluster_index = 0
+for c_in in range(0,len(clusters)):
+
+    for label in clusters[c_in]:
+        print(label, 'Label' , l[label][14],'Clustered to Index',c_in)
+print(clusters)
 
 print("--------------Clustering Results Writen to results.csv-------------")
