@@ -10,11 +10,11 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 
-r, c = 1100, 2
+r, c = 1000, 2
 results = [[0 for x in range(c)] for y in range(r)]
 
-k = genfromtxt('occu_demo_data.csv', delimiter=',')
-#k = genfromtxt('eeg_demo.csv', delimiter=',')
+#k = genfromtxt('occu_demo_data.csv', delimiter=',')
+k = genfromtxt('eeg_demo.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
 l = k
 k = k[:,0:len(k[0])-1]
@@ -40,7 +40,7 @@ for row in k_norm:
     dist_list.append(dist_list_row)
     # print(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.186435,2)
+    optics_instance = optics(dist_list_row,0.20,2)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -84,13 +84,13 @@ for row in results:
     if row[0] > row[1]:
         output.write(str(tempRowNum))
         output.write(str(","))
-        output.write(str(1))
+        output.write(str(0))
         # output.write(str(","))
         # output.write(str(l[c][5]))
     else:
         output.write(str(tempRowNum))
         output.write(str(","))
-        output.write(str(0))
+        output.write(str(1))
         # output.write(str(","))
         # output.write(str(l[c][5]))
     # c = c+1

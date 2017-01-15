@@ -6,10 +6,7 @@ with open("occu_demo_data.csv") as textfile1, open("results.csv") as textfile2:
         x = x.strip()
         y = y.strip()
 
-        #print(x)
-
         cellX = x.split(",")
-        #print(cellX)
         cellY = y.split(",")
 
         if cellX[7] == cellY[1]:
