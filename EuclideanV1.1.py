@@ -40,7 +40,7 @@ for row in k_norm:
     dist_list.append(dist_list_row)
     # print(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.186435,1)
+    optics_instance = optics(dist_list_row,0.186435,2)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -78,22 +78,22 @@ output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
 print(len(results))
 output = open('results.csv', 'w')
 c = 0
-
+tempRowNum = 1
 for row in results:
     print("row: " + str(tempRowNum) + " ****has count of cluster 0: " + str(row[0]) + " ****has count of cluster 1: " + str(row[1]))
     if row[0] > row[1]:
         output.write(str(tempRowNum))
         output.write(str(","))
-        output.write(str(0))
-        output.write(str(","))
-        output.write(str(l[c][5]))
+        output.write(str(1))
+        # output.write(str(","))
+        # output.write(str(l[c][5]))
     else:
         output.write(str(tempRowNum))
         output.write(str(","))
-        output.write(str(1))
-        output.write(str(","))
-        output.write(str(l[c][5]))
-    c = c+1
+        output.write(str(0))
+        # output.write(str(","))
+        # output.write(str(l[c][5]))
+    # c = c+1
     output.write(str("\n"))
     tempRowNum = tempRowNum + 1
 
