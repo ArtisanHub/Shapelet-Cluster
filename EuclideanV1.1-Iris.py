@@ -6,7 +6,9 @@ from scipy.spatial import distance
 
 import numpy as np
 
-r, c = 150, 3
+import sys
+
+r, c = int(sys.argv[1]), int(sys.argv[2])
 results = [[0 for x in range(c)] for y in range(r)]
 
 k = genfromtxt('iris_data.csv', delimiter=',')
@@ -15,7 +17,6 @@ l = k
 k = k[:,0:len(k[0])]
 
 k_norm = preprocessing.scale(k)
-print(k_norm)
 
 dist_list = list()
 
@@ -27,7 +28,7 @@ for row in k_norm:
         dist_list_row.append(val)
     dist_list.append(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.20, 1)
+    optics_instance = optics(dist_list_row, float(sys.argv[3]), int(sys.argv[4]))
     print("Distance for row ")
     print(count)
     count = count + 1
