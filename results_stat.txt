@@ -1,0 +1,42 @@
+//Occupancy dataset
+eps= 0.186435
+
+min_pts = 2
+
+Total number of rows considered: 1100
+
+Correctly clustered number of rows: 1018
+
+Incorrectly clustered number of rows: 82
+
+Accuracy of the clustering technique : 92.54545454545455%
+
+//EEG dataset
+eps= 0.23
+
+min_pts = 2
+
+Total number of rows considered: 1000
+Correctly clustered number of rows: 626
+Incorrectly clustered number of rows: 374
+Accuracy of the clustering technique : 62.6%
+
+
+//Iris dataset
+eps= 0.20
+
+min_pts = 1
+
+Total number of rows considered: 150
+Correctly clustered number of rows: 101
+Incorrectly clustered number of rows: 49
+Accuracy of the clustering technique : 67.33333333333333%
+
+//Wine dataset
+eps= 0.10
+min_pts = 5 
+
+Total number of rows considered: 178
+Correctly clustered number of rows: 106
+Incorrectly clustered number of rows: 72
+Accuracy of the clustering technique : 59.55056179775281%
