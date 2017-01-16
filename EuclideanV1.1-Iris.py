@@ -1,4 +1,3 @@
-
 from pyclustering.cluster.optics import optics
 from sklearn import preprocessing
 from numpy import genfromtxt
@@ -66,26 +65,15 @@ output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
 
 print(len(results))
 output = open('results.csv', 'w')
-c = 0
 tempRowNum = 1
+
 for row in results:
     print("row: " + str(tempRowNum) + " ****has count of cluster 1: " + str(row[0]) + " ****has count of cluster 2: " + str(row[1])
           + " ****has count of cluster 3: " + str(row[2]))
-    if (row[0] >= row[1]) and (row[0] > row[2]):
-        output.write(str(tempRowNum))
-        output.write(str(","))
-        output.write(str(1))
 
-    elif (row[1] > row[0]) and (row[1] >= row[2]):
-        output.write(str(tempRowNum))
-        output.write(str(","))
-        output.write(str(2))
-
-    else:
-        output.write(str(tempRowNum))
-        output.write(str(","))
-        output.write(str(3))
-
+    output.write(str(tempRowNum))
+    output.write(str(","))
+    output.write(str(row.index(max(row))+1))
     output.write(str("\n"))
     tempRowNum = tempRowNum + 1
 
