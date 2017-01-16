@@ -1,35 +1,23 @@
-from pyclustering.cluster import cluster_visualizer
-from pyclustering.cluster.birch import birch
+
 from pyclustering.cluster.optics import optics
-from pyclustering.utils import draw_clusters
 from sklearn import preprocessing
-from sklearn.cluster import DBSCAN
 from numpy import genfromtxt
 from scipy.spatial import distance
-import math
-import numpy as np
-import matplotlib.pyplot as plt
 
-r, c = 1000, 2
+import numpy as np
+
+r, c = 150, 3
 results = [[0 for x in range(c)] for y in range(r)]
 
-#k = genfromtxt('occu_demo_data.csv', delimiter=',')
-k = genfromtxt('eeg_demo.csv', delimiter=',')
+k = genfromtxt('iris_data.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
 l = k
-k = k[:,0:len(k[0])-1]
+k = k[:,0:len(k[0])]
 
 k_norm = preprocessing.scale(k)
+print(k_norm)
 
 dist_list = list()
-# opt = optics(k_norm,0.1,5)
-# opt.process()
-# cluster = opt.get_clusters()
-# noises = opt.get_noise()
-# print(len(cluster))
-# print((cluster))
-# print(k_norm[1],'.',k_norm[2],'.',k_norm[19],'.',k_norm[4],'.',k_norm[5])
-# print(len(noises))
 
 count =1
 for row in k_norm:
@@ -38,9 +26,8 @@ for row in k_norm:
         val = distance.euclidean(row,row1)
         dist_list_row.append(val)
     dist_list.append(dist_list_row)
-    # print(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.15,2)
+    optics_instance = optics(dist_list_row,0.20, 1)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -63,6 +50,7 @@ for row in k_norm:
 
            else:
                results[temp][c-1] = results[temp][c-1] + 1
+               #continue
 
        clusterCount = clusterCount + 1
 
@@ -80,20 +68,23 @@ output = open('results.csv', 'w')
 c = 0
 tempRowNum = 1
 for row in results:
-    print("row: " + str(tempRowNum) + " ****has count of cluster 0: " + str(row[0]) + " ****has count of cluster 1: " + str(row[1]))
-    if row[0] > row[1]:
-        output.write(str(tempRowNum))
-        output.write(str(","))
-        output.write(str(0))
-        # output.write(str(","))
-        # output.write(str(l[c][5]))
-    else:
+    print("row: " + str(tempRowNum) + " ****has count of cluster 1: " + str(row[0]) + " ****has count of cluster 2: " + str(row[1])
+          + " ****has count of cluster 3: " + str(row[2]))
+    if (row[0] >= row[1]) and (row[0] > row[2]):
         output.write(str(tempRowNum))
         output.write(str(","))
         output.write(str(1))
-        # output.write(str(","))
-        # output.write(str(l[c][5]))
-    # c = c+1
+
+    elif (row[1] > row[0]) and (row[1] >= row[2]):
+        output.write(str(tempRowNum))
+        output.write(str(","))
+        output.write(str(2))
+
+    else:
+        output.write(str(tempRowNum))
+        output.write(str(","))
+        output.write(str(3))
+
     output.write(str("\n"))
     tempRowNum = tempRowNum + 1
 
