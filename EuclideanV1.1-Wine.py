@@ -27,7 +27,7 @@ for row in k_norm:
         dist_list_row.append(val)
     dist_list.append(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.10, 5)
+    optics_instance = optics(dist_list_row,0.099995, 5)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -60,7 +60,7 @@ for row in k_norm:
 print("--------------Clustering Results-------------")
 
 
-output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
+output = open('/home/pravinda/PycharmProjects/Shapelet-Cluster/results.csv', 'w')
 
 
 print(len(results))
