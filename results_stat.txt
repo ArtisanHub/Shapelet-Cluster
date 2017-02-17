@@ -12,14 +12,13 @@ Incorrectly clustered number of rows: 82
 Accuracy of the clustering technique : 92.54545454545455%
 
 //EEG dataset
-eps= 0.23
-
+eps= 0.18
 min_pts = 2
 
 Total number of rows considered: 1000
-Correctly clustered number of rows: 626
-Incorrectly clustered number of rows: 374
-Accuracy of the clustering technique : 62.6%
+Correctly clustered number of rows: 795
+Incorrectly clustered number of rows: 205
+Accuracy of the clustering technique : 79.5%
 
 
 //Iris dataset

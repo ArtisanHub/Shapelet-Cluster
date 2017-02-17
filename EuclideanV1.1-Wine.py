@@ -27,7 +27,7 @@ for row in k_norm:
         dist_list_row.append(val)
     dist_list.append(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.10, 5)
+    optics_instance = optics(dist_list_row,0.099995, 5)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -58,6 +58,7 @@ for row in k_norm:
     print(clusterCount-1)
 
 print("--------------Clustering Results-------------")
+
 
 
 output = open('results.csv', 'w')

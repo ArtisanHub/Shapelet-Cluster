@@ -1,0 +1,5 @@
+Cluster stats of EEG-Eye State dataset
+Total number of rows considered: 1000
+Correctly clustered number of rows: 0
+Incorrectly clustered number of rows: 1000
+Accuracy of the clustering technique : 0.0%

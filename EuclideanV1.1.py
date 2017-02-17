@@ -8,7 +8,7 @@ from numpy import genfromtxt
 from scipy.spatial import distance
 import math
 import numpy as np
-import matplotlib.pyplot as plt
+
 
 r, c = 1000, 2
 results = [[0 for x in range(c)] for y in range(r)]
@@ -18,7 +18,6 @@ k = genfromtxt('eeg_demo.csv', delimiter=',')
 k = np.ma.compress_cols(np.ma.masked_invalid(k))
 l = k
 k = k[:,0:len(k[0])-1]
-
 k_norm = preprocessing.scale(k)
 
 dist_list = list()
@@ -40,7 +39,7 @@ for row in k_norm:
     dist_list.append(dist_list_row)
     # print(dist_list_row)
 
-    optics_instance = optics(dist_list_row,0.15,2)
+    optics_instance = optics(dist_list_row,0.18,2)
     print("Distance for row ")
     print(count)
     count = count + 1
@@ -72,7 +71,7 @@ for row in k_norm:
 print("--------------Clustering Results-------------")
 
 
-output = open('D:/FYP-Developments/Shapelet-Cluster/results.csv', 'w')
+output = open('/home/pravinda/PycharmProjects/Shapelet-Cluster/results.csv', 'w')
 
 
 print(len(results))
