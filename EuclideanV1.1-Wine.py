@@ -60,7 +60,8 @@ for row in k_norm:
 print("--------------Clustering Results-------------")
 
 
-output = open('/home/pravinda/PycharmProjects/Shapelet-Cluster/results.csv', 'w')
+
+output = open('results.csv', 'w')
 
 
 print(len(results))
