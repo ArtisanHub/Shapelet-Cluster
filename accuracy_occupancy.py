@@ -17,7 +17,7 @@ output = open('output.csv', 'w')
 
 print("Output writing")
 
-output.write(str("Cluster stats of EEG-Eye State dataset"))
+output.write(str("Cluster stats of Occupancy Detection dataset"))
 output.write(str("\n"))
 
 output.write(str("Total number of rows considered: 1100"))

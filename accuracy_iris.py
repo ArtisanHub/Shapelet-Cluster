@@ -20,7 +20,23 @@ with open("iris_data.csv") as textfile1, open("results.csv") as textfile2:
         else:
             continue
 
-print("Total number of rows considered: 150")
-print("Correctly clustered number of rows: " + str(count))
-print("Incorrectly clustered number of rows: " + str(150-count))
-print("Accuracy of the clustering technique : " + str((count/150)*100) + "%")
+
+output = open('output.csv', 'w')
+
+
+print("Output writing")
+
+output.write(str("Cluster stats of iris dataset"))
+output.write(str("\n"))
+
+output.write(str("Total number of rows considered: 150"))
+output.write(str("\n"))
+
+output.write(str("Correctly clustered number of rows: " + str(count)))
+output.write(str("\n"))
+
+output.write(str("Incorrectly clustered number of rows: " + str(150-count)))
+output.write(str("\n"))
+
+output.write(str("Accuracy of the clustering technique : " + str((count/150)*100) + "%"))
+output.write(str("\n"))
