@@ -25,7 +25,6 @@ def cluster_accuracy(input_file_with_clusters,output_file_with_stats):
     output = open(output_file_with_stats, 'w')
 
 
-    print("Output writing")
 
     output.write(str("Cluster stats of Occupancy Detection dataset"))
     output.write(str("\n"))
@@ -41,5 +40,3 @@ def cluster_accuracy(input_file_with_clusters,output_file_with_stats):
 
     output.write(str("Accuracy of the clustering technique : " + str((count/1100)*100) + "%"))
     output.write(str("\n"))
-
-    print("Output written")

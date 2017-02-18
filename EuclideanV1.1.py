@@ -65,7 +65,7 @@ def cluster_algo(r,c,eps,min_pts,dataset_name):
         print("Number of clusters")
         print(clusterCount - 1)
 
-    print("--------------Clustering Results-------------")
+    #Clustering Results - Writing to file
 
     print(len(results))
     output = open(output_file_with_clusters_, 'w')
@@ -83,5 +83,5 @@ def cluster_algo(r,c,eps,min_pts,dataset_name):
 
     output.close()
 
-    print("--------------Clustering Results Writen to results.csv-------------")
+    #Clustering Results - Written to file
 
