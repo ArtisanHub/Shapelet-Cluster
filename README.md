@@ -3,12 +3,17 @@ Unsupervised Learning clustering technique is implemented in order to label a gi
 Output of the implementation will provide a classify each time instance of a multivariate time series dataset. 
 
 # How to run
+## EuclideanV1.1.py script
 Function named cluster_algo(r,c,eps,min_pts,dataset_name) has to be called passing the necessary parameters.
   r - Number of rows of the total dataset
   c - Expected number of events/clusters the multivariate time series is expected to be clustered to
   eps - maximum radius to be considered with respect to a given data point in defining cluster boundary
   min_pts - minimum number of points within a cluster
   dataset_name - provide the obtained dataset file name
+  
+## cluster_accuracy.py script
+Function named cluster_accuracy(input_file_with_clusters,output_file_with_stats) has to be called passing the necessary parameters.
+  
 
 # Important
 The technique only facilitates numeric datasets
